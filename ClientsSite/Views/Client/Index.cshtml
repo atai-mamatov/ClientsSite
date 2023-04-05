@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClientsSite.Data.Models.Entities.Client>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center">Список клиентов</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Добавить клиента</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            <div class="text-fn">
+                    <label for="firstname" style="color:black">ID </label>
+            </div>
+            </th>
+            <th>
+                <div class="text-fn">
+                    <label for="firstname" style="color:black">Имя </label>
+                </div>
+            </th>
+            <th>
+                <div class="text-fn">
+                    <label for="firstname" style="color:black">Фамилия</label>
+                </div>
+            </th>
+            <th>
+                <div class="text-fn">
+                    <label for="firstname" style="color:black">Номер телефона</label>
+                </div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNum)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
